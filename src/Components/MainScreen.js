@@ -4,14 +4,22 @@ import GlobalStyle from '../styles/GlobalStyles'
 import Logo from './Logo'
 import Questions from './Questions'
 import Footer from './Footer'
+import cards from './cards'
+import { useState } from 'react'
 
 const MainScreen = () => {
+  const [counter] = useState(() => cards.length)
+  const [counterConcludes, setCounterConcludes] = useState(0)
+
   return (
     <ScreenContainer>
       <GlobalStyle />
       <Logo />
-      <Questions />
-      <Footer />
+      <Questions
+        setCounterConcludes={setCounterConcludes}
+        counterConcludes={counterConcludes}
+      />
+      <Footer counter={counter} counterConcludes={counterConcludes} />
     </ScreenContainer>
   )
 }

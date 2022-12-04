@@ -5,15 +5,37 @@ import cards from './cards.js'
 import { useState } from 'react'
 
 const OpenQuestions = props => {
-  const { clickedItens, setClickedItens } = props
-  const [turnCardController, setTurnCardController] = useState([])
+  const {
+    clickedItens,
+    setClickedItens,
+    turnCardController,
+    setTurnCardController,
+    cardArray,
+    setCardArray,
+    setCounterConcludes,
+    counterConcludes
+  } = props
 
   const handleClick = e => {
     let newTurnCardController = [...turnCardController, e]
     setTurnCardController(newTurnCardController)
   }
 
-  const handleButtonClick = e => {}
+  const handleButtonClick = (indice, t) => {
+    const newArray = [...clickedItens].splice()
+    setClickedItens(newArray)
+    let type = t
+    const newCardArray = [...cardArray]
+    newCardArray.forEach((elm, i) => {
+      if (i === indice) {
+        newCardArray[i] = type
+        if (counterConcludes <= 8) {
+          setCounterConcludes(counterConcludes + 1)
+        }
+      }
+    })
+    setCardArray(newCardArray)
+  }
 
   return (
     <>
@@ -28,9 +50,11 @@ const OpenQuestions = props => {
           <ContainerButtons
             turnCardController={turnCardController.includes(elm)}
           >
-            <button onClick={() => handleButtonClick(elm)}>Não Lembrei</button>
-            <button>Quase não lembrei</button>
-            <button>Zap!</button>
+            <button onClick={() => handleButtonClick(i, 1)}>Não Lembrei</button>
+            <button onClick={() => handleButtonClick(i, 2)}>
+              Quase não lembrei
+            </button>
+            <button onClick={() => handleButtonClick(i, 3)}>Zap!</button>
           </ContainerButtons>
         </PerguntaAberta>
       ))}
@@ -100,3 +124,23 @@ const ContainerButtons = styled.div`
     }
   }
 `
+
+// switch (t) {
+//   case 1:
+//     setColor('#FF3030')
+//     setLine('line-through')
+//     setIcon('iconeErro')
+//     break
+
+//   case 2:
+//     setColor('#FF922E')
+//     setLine('line-through')
+//     setIcon('iconeQuase')
+//     break
+
+//   case 'zap':
+//     setColor('#2FBE34')
+//     setLine('line-through')
+//     setIcon('iconeCerto')
+//     break
+// }

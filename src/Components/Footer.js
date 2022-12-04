@@ -1,11 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Footer = () => {
+const Footer = props => {
+  const { counter, counterConcludes } = props
+
   return (
     <FooterConcluded>
       <p>
-        <span>0/4</span> CONCLUÍDOS
+        <span>
+          {counterConcludes}/{counter}
+        </span>{' '}
+        CONCLUÍDOS
       </p>
     </FooterConcluded>
   )
