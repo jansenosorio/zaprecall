@@ -5,7 +5,7 @@ const Footer = props => {
   const { counter, counterConcludes } = props
 
   return (
-    <FooterConcluded>
+    <FooterConcluded data-test="footer">
       <p>
         <span>
           {counterConcludes}/{counter}

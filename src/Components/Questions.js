@@ -13,7 +13,7 @@ const Questions = props => {
   const [cardArray, setCardArray] = useState(initialArray)
 
   return (
-    <ContainerPergunta>
+    <ContainerPergunta data-test="flashcard">
       <OpenQuestions
         clickedItens={clickedItens}
         setClickedItens={setClickedItens}

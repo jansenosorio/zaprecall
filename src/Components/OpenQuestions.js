@@ -45,16 +45,29 @@ const OpenQuestions = props => {
           display={clickedItens.includes(i)}
           turnCardController={turnCardController.includes(elm)}
         >
-          <p>{turnCardController.includes(elm) ? elm.answer : elm.question}</p>
-          <img src={setaVirar} onClick={() => handleClick(elm)}></img>
+          <p data-test="flashcard-text">
+            {turnCardController.includes(elm) ? elm.answer : elm.question}
+          </p>
+          <img
+            src={setaVirar}
+            onClick={() => handleClick(elm)}
+            data-test="turn-btn"
+          ></img>
           <ContainerButtons
             turnCardController={turnCardController.includes(elm)}
           >
-            <button onClick={() => handleButtonClick(i, 1)}>Não Lembrei</button>
-            <button onClick={() => handleButtonClick(i, 2)}>
+            <button onClick={() => handleButtonClick(i, 1)} data-test="no-btn">
+              Não Lembrei
+            </button>
+            <button
+              onClick={() => handleButtonClick(i, 2)}
+              data-test="partial-btn"
+            >
               Quase não lembrei
             </button>
-            <button onClick={() => handleButtonClick(i, 3)}>Zap!</button>
+            <button onClick={() => handleButtonClick(i, 3)} data-test="zap-btn">
+              Zap!
+            </button>
           </ContainerButtons>
         </PerguntaAberta>
       ))}

@@ -28,8 +28,8 @@ const ClosedQuestions = props => {
           line={wasClicked.includes(elm)}
           cardArray={cardArray[i] > 0 && cardArray[i]}
         >
-          <p>Pergunta {i + 1}</p>
-          <button>
+          <p data-test="flashcard-text">Pergunta {i + 1}</p>
+          <button onClick={() => turnCard(elm, i)} data-test="play-btn">
             <img
               src={
                 cardArray[i] === 1
@@ -40,7 +40,6 @@ const ClosedQuestions = props => {
                   ? iconeCerto
                   : setaPlay
               }
-              onClick={() => turnCard(elm, i)}
             ></img>
           </button>
         </PerguntaFechada>
